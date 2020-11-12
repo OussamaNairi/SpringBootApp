@@ -1,15 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
    <%@ taglib prefix="c"      uri="http://java.sun.com/jsp/jstl/core" %>
+   <%@ taglib prefix="sec"   uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <c:set var="cxt" value="${pageContext.request.contextPath }" />
- <%@ taglib prefix="sec"   uri="http://www.springframework.org/security/tags"%>
+
 </head>
 <body>
+<sec:authorize access="isAuthenticated()">
+<p>Bienvenue <sec:authentication property="name" /></p>
+( <a href='<c:url value="/logout" />'> se deconnecter</a>)
+</sec:authorize>
 <h2>Liste des Magasins</h2>
 <table border="1">
     <c:forEach items="${liste}" var="m">
