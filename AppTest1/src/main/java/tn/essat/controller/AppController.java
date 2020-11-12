@@ -28,7 +28,7 @@ public class AppController {
 		this.daop = daop;
 	}
 
-	@GetMapping("/home")
+	@GetMapping("/")
 	public String get1(Model m) {
 		List<Magasin> liste=daom.findAll();
 		m.addAttribute("liste", liste);
@@ -40,7 +40,7 @@ public class AppController {
 		m.addAttribute("liste", liste);
 		return "produits";
 	}
-	@GetMapping("/ajout")
+	@GetMapping("/ajoutProduit")
 	public String get3(Model m) {
 		Produit p=new Produit();
 		List<Magasin> liste=daom.findAll();
@@ -52,5 +52,10 @@ public class AppController {
 	public String get4(Model m,@ModelAttribute("p") Produit p) {
 		daop.save(p);
 		return "redirect:/home";
+	}
+	@GetMapping("/deleteProduit/{id}")
+	public String get5(Model m,@PathVariable("id") int id) {
+		daop.deleteById(id);
+		return "redirect:/";
 	}
 }

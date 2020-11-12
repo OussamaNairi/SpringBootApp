@@ -7,6 +7,7 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <c:set var="cxt" value="${pageContext.request.contextPath }" />
+ <%@ taglib prefix="sec"   uri="http://www.springframework.org/security/tags"%>
 </head>
 <body>
 <h2>Liste des Magasins</h2>
@@ -18,6 +19,8 @@
      </tr>
         </c:forEach>
 </table>
-<p><a href="${cxt}/ajout">Ajouter un Produit</a> </p>
+<sec:authorize access="hasRole('ADMIN')">
+<p><a href="${cxt}/ajoutProduit">Ajouter un Produit</a> </p>
+</sec:authorize>
 </body>
 </html>
