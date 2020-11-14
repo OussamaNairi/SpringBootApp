@@ -8,7 +8,7 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <c:set var="cxt" value="${pageContext.request.contextPath }" />
-
+<link href="<c:url value='/bootstrap/css/bootstrap.min.css' />" rel="stylesheet" >
 </head>
 <body>
 <sec:authorize access="isAuthenticated()">

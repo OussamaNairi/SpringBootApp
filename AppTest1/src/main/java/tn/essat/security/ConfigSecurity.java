@@ -29,9 +29,11 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter{
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.formLogin();
+		http.formLogin().loginPage("/login").defaultSuccessUrl("/")
+		.failureUrl("/login?error=true").permitAll();
 		http.authorizeRequests().antMatchers("/ajout**/**","/delete**/**").hasRole("ADMIN");
 		http.authorizeRequests().anyRequest().authenticated();
+		http.exceptionHandling().accessDeniedPage("/notAuthorise");
 	}
 	@Bean
 	public PasswordEncoder cryptMP() {

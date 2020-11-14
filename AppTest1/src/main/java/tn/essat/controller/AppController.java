@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import tn.essat.dao.IMagasinDao;
 import tn.essat.dao.IProduitDao;
@@ -57,5 +60,15 @@ public class AppController {
 	public String get5(Model m,@PathVariable("id") int id) {
 		daop.deleteById(id);
 		return "redirect:/";
+	}
+	@GetMapping("/notAuthorise")
+	public String get6(Model m) {
+		return "deniedPage";
+	}
+	
+	@RequestMapping(value ="/login" ,method= {RequestMethod.GET,RequestMethod.POST})
+	public String get7(Model m,@RequestParam("error") String error,@RequestParam("logout") String logout) {
+		
+		return "";
 	}
 }
