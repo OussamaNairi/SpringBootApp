@@ -67,7 +67,7 @@ public class AppController {
 	}
 	
 	@RequestMapping(value ="/login" ,method= {RequestMethod.GET,RequestMethod.POST})
-	public String get7(Model m,@RequestParam("error") String error,@RequestParam("logout") String logout) {
+	public String get7(Model m,@RequestParam(value="error", required=false) String error,@RequestParam(value="logout", required=false) String logout) {
 		String errormessage=null;
 		if(error!=null) {
 			errormessage="Votre username ou password est incorrect !";
@@ -76,6 +76,6 @@ public class AppController {
 			errormessage="Merci pour votre connexion";
 		}
 		m.addAttribute("message",errormessage);
-		return "";
+		return "login";
 	}
 }

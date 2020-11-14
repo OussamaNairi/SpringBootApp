@@ -34,6 +34,7 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter{
 		http.authorizeRequests().antMatchers("/ajout**/**","/delete**/**").hasRole("ADMIN");
 		http.authorizeRequests().anyRequest().authenticated();
 		http.exceptionHandling().accessDeniedPage("/notAuthorise");
+		http.csrf().disable();
 	}
 	@Bean
 	public PasswordEncoder cryptMP() {
