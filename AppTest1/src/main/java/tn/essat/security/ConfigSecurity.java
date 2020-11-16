@@ -18,7 +18,7 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		PasswordEncoder crypt=cryptMP();
-		//System.out.println(crypt.encode("essat"));
+	//System.out.println(crypt.encode("essat"));
 	//	auth.inMemoryAuthentication().withUser("salah1").password(crypt.encode("essat")).roles("USER");
 		//auth.inMemoryAuthentication().withUser("fatma1").password(crypt.encode("essat")).roles("ADMIN","USER");
 	auth.jdbcAuthentication().dataSource(dataSource)

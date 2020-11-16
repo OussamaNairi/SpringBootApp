@@ -54,7 +54,7 @@ public class AppController {
 	@PostMapping("/saveProduit")
 	public String get4(Model m,@ModelAttribute("p") Produit p) {
 		daop.save(p);
-		return "redirect:/home";
+		return "redirect:/";
 	}
 	@GetMapping("/deleteProduit/{id}")
 	public String get5(Model m,@PathVariable("id") int id) {
